@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CMS Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="cms-body">
+  <div class="cms-container">
+    <label for="headingInput" class="cms-label">Heading</label>
+    <input type="text" id="headingInput" class="cms-input" placeholder="Enter heading..." />
+    <div class="cms-buttons">
+      <button onclick="editHeading()">Edit</button>
+      <button onclick="saveHeading()">Save</button>
+    </div>
+
+    <!-- 🔥 Live styled preview -->
+    <h1 class="cms-heading">
+      <span id="previewHeading"></span>
+    </h1>
+  </div>
+
+  <script src="api.js"></script>
+  <script>
+    const headingInput = document.getElementById("headingInput");
+    const previewHeading = document.getElementById("previewHeading");
+
+    function editHeading() {
+      headingInput.disabled = false;
+      headingInput.focus();
+    }
+
+    async function saveHeading() {
+      const text = headingInput.value.trim();
+      if (!text) return alert("Heading cannot be empty!");
+      await saveHeadingToAPI(text);
+      headingInput.disabled = true;
+    }
+
+    headingInput.addEventListener("input", () => {
+      const words = headingInput.value.split(" ");
+      // Highlight the 2nd word (change as needed)
+      const styledText = words
+        .map((word, index) =>
+          index === 1 ? `<span class="highlight-orange">${word}</span>` : word
+        )
+        .join(" ");
+      previewHeading.innerHTML = styledText;
+    });
+
+    window.onload = async () => {
+      const heading = await fetchHeadingFromAPI();
+      headingInput.value = heading;
+      headingInput.disabled = true;
+
+      headingInput.dispatchEvent(new Event("input")); // trigger preview
+    };
+  </script>
+</body>
+</html>
+
+

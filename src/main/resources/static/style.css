@@ -1,0 +1,269 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(to right, #fff5e5, #ffffff);
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.hero-card {
+  flex: 1 1 400px;
+  min-height: 300px;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 12px;
+  transition: border 0.3s;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-left h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.hero-right {
+  background-image: url('https://s3-alpha-sig.figma.com/img/c257/a959/5ce3eddd17534d8cb91a80062f10fbff?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=iJ4PeBNAk21JSTkAe-1hIK7r94aZzuzyt63nn7ODbQ18zK1JjMODpyahCXxoU0VLev4vUeamiJ0xLD7kL2kLQeMCcyhwQ5N8YW1ZbLoO4NQRHC8ed4~0yYa5wZOAOKZ6-mqv1VOzwvOhcQrJYiZb-R0jWgvSpGsIgyBjHaobkUJT63v7mBhdqtBQ5TZZwatg~lgj-SV9jAy6fwXZPTn8azv1J0YLulZCQwVSzkOUpgmOzBKaw4vb-oYpkuiUkbcnk7e4zPhLmpFDrGWNSMULEGE4oimf5yufV6HTYKnH6CX3JnC0ck~-IvObS2MuMVUFd1nIOBOo6EJDVEFM~9eYUw__');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Cards Section */
+.cards-section {
+  padding: 2rem;
+}
+
+.cards-above,
+.cards-below {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  padding: 1rem;
+  background: #fafafa;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: 0.3s;
+  width:70%;
+}
+
+.card:hover {
+  border-color: #fdbb63;
+  color: #fdbb63;
+}
+
+/* Text Elements */
+.get-started-btn {
+  background-color: #fdbb63;
+  width: 30%;
+  font-family: roboto;
+  padding: 5px;
+}
+
+.cart {
+  width: 40%;
+  padding: 10px;
+}
+
+.head {
+  font-family: "roboto";
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.para {
+  font-family: "roboto";
+  font-size: 14px;
+  font-weight: normal;
+  color: black;
+}
+
+/* Hover effect on all key elements */
+.card:hover,
+.hero-card:hover,
+.head:hover,
+.para:hover,
+.hero-card *:hover,
+.card *:hover {
+  border: 2px dotted blue !important;
+  cursor: pointer;
+}
+
+/* Click effect */
+.card.clicked,
+.hero-card.clicked,
+.card.clicked *,
+.hero-card.clicked * {
+  border: 2px solid blue !important;
+  position: relative;
+}
+
+.card.clicked::after,
+.hero-card.clicked::after {
+  content: attr(data-size);
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 12px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  color: blue;
+}
+
+/* HR with 5 green dots */
+.dark-line {
+  border: none;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    #000 0%,
+    #000 18.5%,
+    green 18.5%,
+    green 20%,
+    #000 20%,
+    #000 38.5%,
+    green 38.5%,
+    green 40%,
+    #000 40%,
+    #000 58.5%,
+    green 58.5%,
+    green 60%,
+    #000 60%,
+    #000 78.5%,
+    green 78.5%,
+    green 80%,
+    #000 80%,
+    #000 98.5%,
+    green 98.5%,
+    green 100%
+  );
+  margin: 2rem 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+}
+
+/* CMS Page Styles */
+.cms-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f9f9f9;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.cms-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.cms-label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cms-input {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: border 0.3s;
+}
+
+.cms-input:focus {
+  border-color: #fdbb63;
+  outline: none;
+}
+
+.cms-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cms-buttons button {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 1rem;
+  background-color: #fdbb63;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cms-buttons button:hover {
+  background-color: #ffa733;
+}
+
+.cms-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 1.5rem;
+}
+
+.highlight-orange {
+  color: #fdbb63;
+  font-family: "Roboto", sans-serif;
+}

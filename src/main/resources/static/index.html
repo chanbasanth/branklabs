@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ABC Company</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <nav>
+      <ul>
+        <li>About</li>
+        <li>Services</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card hero-left">
+        <h1 id="dynamicHeading"></h1>
+        <p>
+          Powerful AI solutions that go beyond mere data sorting and exploration.
+          Use our array of AI enabled solutions that understand your business and recommend the optimal way forward.
+        </p>
+        <button class="get-started-btn">Get started</button>
+      </div>
+      <div class="hero-card hero-right"></div>
+    </section>
+
+    <section class="cards-section">
+      <div class="cards-above">
+        <div class="card">
+          <h1 class="head">Ready to Go Algos</h1>
+          <p class="para">We have ready accelerators embedded with learnings from hundreds of past projects, generating actionable results.</p>
+        </div>
+        <div class="card">
+          <h1 class="head">Internal Capability building</h1>
+          <p class="para">We productize all our work, enhance them with the latest AI technology, and train your internal teams to leverage them.</p>
+        </div>
+      </div>
+
+      <hr class="dark-line" />
+
+      <div class="cards-below">
+        <div class="card">
+          <h1 class="head">Multi-source data</h1>
+          <p class="para">Our solutions work with old, new or incomplete datasets, in different formats, and from diverse sources.</p>
+        </div>
+        <div class="card">
+          <h1 class="head">Stakeholder alignment</h1>
+          <p class="para">No black boxes. Stakeholders understand the "how", "so what", and "now what", leading to clear decision-making and trade-offs.</p>
+        </div>
+        <div class="card">
+          <h1 class="head">Continuous engagement</h1>
+          <p class="para">We engage long-term to enhance, course-correct, and adopt new models to continuously refine your work.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="api.js"></script>
+  <script>
+    function addClickEffect(elements) {
+      elements.forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('.clicked').forEach(c => c.classList.remove('clicked'));
+          el.classList.add('clicked');
+          const width = el.offsetWidth;
+          const height = el.offsetHeight;
+          el.setAttribute('data-size', `${width}px × ${height}px`);
+        });
+      });
+    }
+
+    window.onload = async () => {
+      const heading = await fetchHeadingFromAPI();
+      document.getElementById("dynamicHeading").textContent = heading;
+
+      addClickEffect(document.querySelectorAll('.card, .hero-card, .hero-card *, .card *'));
+    };
+  </script>
+</body>
+</html>
